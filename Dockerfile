@@ -14,7 +14,7 @@ RUN apk --update add openjdk7-jre
 RUN \
   cd /tmp && \
   wget "$AWS_URL" && \
-  mkdir -p "$DYNAMO_DIR" && \
+  mkdir -p "$DYNAMO_DIR" "$DB_DIR" && \
   tar xzf dynamodb_local_latest.tar.gz -C "$DYNAMO_DIR/" && \
   rm -f dynamodb_local_latest.tar.gz
 
