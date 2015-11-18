@@ -6,6 +6,8 @@ See this [Amazon Docs page](http://docs.aws.amazon.com/amazondynamodb/latest/dev
 
 How to use it:
 ```bash
+git clone https://github.com/adampats/dynamodb-local.git
+cd dynamodb-local
 docker build -t dynamodb-local:latest .
 docker run -d -p 8000:8000 dynamodb-local:latest
 ```
