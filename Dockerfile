@@ -5,7 +5,7 @@ MAINTAINER adampats "https://github.com/adampats"
 
 ENV AWS_URL "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest.tar.gz"
 ENV DYNAMO_DIR "/opt/dynamodb"
-ENV DB_DIR "/opt/dynamodb/data"
+ENV DB_DIR "/opt/data"
 
 # Java 7
 RUN apk --update add openjdk7-jre
@@ -21,7 +21,6 @@ RUN \
 WORKDIR "$DYNAMO_DIR"
 VOLUME "$DB_DIR"
 
-ENTRYPOINT ["/usr/bin/java", "-Djava.library.path=.", "-jar", "DynamoDBLocal.jar", "-dbPath", "$DB_DIR", "-sharedDb"]
-CMD [""]
+ENTRYPOINT exec /usr/bin/java -Djava.library.path= -jar DynamoDBLocal.jar -dbPath "$DB_DIR/." -sharedDb
 
 EXPOSE 8000
